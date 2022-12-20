@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Express-todos</title>
+  </head>
+  <body>
+    <h1>Todos</h1>
+    <h2>Time: <%= time %></h2>
+    <ul>
+      <% todos.forEach(function(t){ %>
+      <li>
+        <form
+          class="delete.form"
+          action="/todos/<%= t.id %>?_method=DELETE"
+          method="POST"
+        >
+          <button type="submit">X</button>
+        </form>
+        <a href="/todos/<%=t.id%>"><%=t.todo %></a>
+        - <%= t.done ? 'done' : 'not done' %>
+      </li>
+      <% }); %>
+    </ul>
+    <a href="/todos/new">Add New Todo</a>
+    <br>
+    <a href="/">Back Home</a>
+  </body>
+</html>
